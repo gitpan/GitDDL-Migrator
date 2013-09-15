@@ -27,7 +27,7 @@ no_index:
 provides:
   GitDDL::Migrator:
     file: lib/GitDDL/Migrator.pm
-    version: 0.01
+    version: 0.02
 requires:
   GitDDL: 0
   Mouse: 0
@@ -36,4 +36,4 @@ resources:
   bugtracker: https://github.com/Songmu/GitDDL-Migrator/issues
   homepage: https://github.com/Songmu/GitDDL-Migrator
   repository: git://github.com/Songmu/GitDDL-Migrator.git
-version: 0.01
+version: 0.02

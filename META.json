@@ -54,7 +54,7 @@
    "provides" : {
       "GitDDL::Migrator" : {
          "file" : "lib/GitDDL/Migrator.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       }
    },
    "release_status" : "stable",
@@ -68,5 +68,5 @@
          "web" : "https://github.com/Songmu/GitDDL-Migrator"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
