@@ -9,7 +9,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.5.6, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Minilla/v0.5.6, CPAN::Meta::Converter version 2.132510'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -27,13 +27,14 @@ no_index:
 provides:
   GitDDL::Migrator:
     file: lib/GitDDL/Migrator.pm
-    version: 0.02
+    version: 0.03
 requires:
   GitDDL: 0
   Mouse: 0
+  SQL::Translator: 0
   perl: 5.008001
 resources:
   bugtracker: https://github.com/Songmu/GitDDL-Migrator/issues
   homepage: https://github.com/Songmu/GitDDL-Migrator
   repository: git://github.com/Songmu/GitDDL-Migrator.git
-version: 0.02
+version: 0.03
