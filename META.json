@@ -4,8 +4,10 @@
       "Masayuki Matsuki <y.songmu@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.6",
-   "license" : "perl_5",
+   "generated_by" : "Minilla/v0.8.0",
+   "license" : [
+      "perl_5"
+   ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
@@ -19,7 +21,8 @@
          "share",
          "eg",
          "examples",
-         "author"
+         "author",
+         "builder"
       ]
    },
    "prereqs" : {
@@ -40,9 +43,7 @@
       },
       "runtime" : {
          "requires" : {
-            "GitDDL" : "0",
-            "Mouse" : "0",
-            "SQL::Translator" : "0",
+            "GitDDL" : "0.03",
             "perl" : "5.008001"
          }
       },
@@ -55,7 +56,7 @@
    "provides" : {
       "GitDDL::Migrator" : {
          "file" : "lib/GitDDL/Migrator.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       }
    },
    "release_status" : "stable",
@@ -69,5 +70,5 @@
          "web" : "https://github.com/Songmu/GitDDL-Migrator"
       }
    },
-   "version" : "0.03"
+   "version" : "0.04"
 }
