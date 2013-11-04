@@ -3,7 +3,10 @@ abstract: 'database migration utility for git managed SQL extended L<GitDDL>'
 author:
   - 'Masayuki Matsuki <y.songmu@gmail.com>'
 build_requires:
+  DBI: 0
+  Test::Git: 0
   Test::More: 0.98
+  Test::Requires: 0
 configure_requires:
   CPAN::Meta: 0
   CPAN::Meta::Prereqs: 0
@@ -28,12 +31,14 @@ no_index:
 provides:
   GitDDL::Migrator:
     file: lib/GitDDL/Migrator.pm
-    version: 0.04
+    version: 0.05
 requires:
   GitDDL: 0.03
+  Mouse: 0
+  SQL::Translator: 0
   perl: 5.008001
 resources:
   bugtracker: https://github.com/Songmu/GitDDL-Migrator/issues
   homepage: https://github.com/Songmu/GitDDL-Migrator
   repository: git://github.com/Songmu/GitDDL-Migrator.git
-version: 0.04
+version: 0.05

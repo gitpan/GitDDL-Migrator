@@ -3,7 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = "0.04";
+our $VERSION = "0.05";
 
 use Carp qw/croak/;
 use SQL::Translator;
@@ -49,7 +49,7 @@ has _real_translator => (
             for my $table ($schema->get_tables) {
                 my @options = $table->options;
                 if (my ($idx) = grep { $options[$_]->{AUTO_INCREMENT} } 0..$#options) {
-                    splice $table->options, $idx, 1;
+                    splice @{$table->options}, $idx, 1;
                 }
             }
         }
@@ -90,6 +90,12 @@ sub deploy {
     my $sql = $self->_slurp(File::Spec->catfile($self->work_tree, $self->ddl_file));
     $self->_do_sql($sql);
 
+    $self->create_version_table($sql);
+}
+
+sub create_version_table {
+    my ($self, $sql) = @_;
+
     $self->_do_sql(<<"__SQL__");
 CREATE TABLE @{[ $self->version_table ]} (
     version     VARCHAR(40) NOT NULL,
@@ -98,7 +104,7 @@ CREATE TABLE @{[ $self->version_table ]} (
 );
 __SQL__
 
-    $self->_insert_version(undef, $sql);
+    $self->_insert_version(undef, $sql || '');
 }
 
 sub _new_translator {
@@ -222,6 +228,8 @@ sub upgrade_database {
 
     my $version = $args{version};
     my $sql     = $args{sql} || $self->diff(version => $version);
+
+    return if $sql =~ /\A\s*\z/ms;
 
     $self->_do_sql($sql);
     $self->_insert_version($version, $sql);
@@ -370,6 +378,10 @@ get previous database version.
 =head2 C<< $gd->rollback_diff >>
 
 display differences SQL from current version and previous version.
+
+=head2 C<< $gd->create_version_table >>
+
+Only create version table, don't deploy any other SQLs. It is useful to apply C<GitDDL::Migrator> to existing databases.
 
 =head1 LICENSE
 
